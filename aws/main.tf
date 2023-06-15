@@ -3,6 +3,7 @@ resource "aws_vpc" "vpc" {
   cidr_block           = var.aws_vpc_cidr_block
   enable_dns_support   = var.aws_vpc_enable_dns_support
   enable_dns_hostnames = var.aws_vp_enable_dns_hostnames
+  provider =
 }
 
 module "aws_security_group_slo_secure_ce" {

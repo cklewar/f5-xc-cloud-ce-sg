@@ -27,6 +27,22 @@ variable "f5xc_ce_slo_firewall" {
 }
 
 variable "gcp_region" {
+  type    = string
+  default = "us-east1"
+  # default = "us-east4"
+}
+
+variable "gcp_zone" {
+  type    = string
+  default = "us-east1-b"
+  # default = "us-east4-b
+}
+
+variable "gcp_project_id" {
+  type = string
+}
+
+variable "gcp_application_credentials" {
   type = string
 }
 

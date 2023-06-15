@@ -2,6 +2,10 @@ variable "common_tags" {
   type = map(string)
 }
 
+variable "f5xc_aws_region" {
+  type = string
+}
+
 variable "f5xc_cluster_name" {
   type = string
 }
