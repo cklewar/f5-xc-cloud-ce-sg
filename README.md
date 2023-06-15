@@ -2,6 +2,10 @@
 
 Terraform to create F5XC cloud CE mandatory SGs
 
+##  Generate prefixes
+
+[![asciicast](https://asciinema.org/a/pxDHGv3BOkdR2jFC2Gyh7C729.svg)](https://asciinema.org/a/pxDHGv3BOkdR2jFC2Gyh7C729)
+
 ## Usage
 
 - Clone this repo with `git clone --recurse-submodules https://github.com/cklewar/f5-xc-cloud-ce-sg`
@@ -12,6 +16,9 @@ Terraform to create F5XC cloud CE mandatory SGs
 - Change backend settings in `versions.tf` file to fit your environment needs
 - Initialize with `terraform init`
 - Apply with `terraform apply -auto-approve` or destroy with `terraform destroy -auto-approve`
+
+
+
 
 ## Cloud CE SG module usage example
   
