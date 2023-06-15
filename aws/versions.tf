@@ -1,22 +1,12 @@
 terraform {
   required_version = ">= 1.3.0"
-  cloud {
-    organization = "cklewar"
-
-    workspaces {
-      name = "f5-xc-ce-sg-module"
-    }
-  }
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = ">= 4.59.0"
     }
-    google = {
-      source  = "hashicorp/google"
-      version = ">= 4.48.0"
-    }
+
     local = ">= 2.2.3"
     null  = ">= 3.1.1"
   }
