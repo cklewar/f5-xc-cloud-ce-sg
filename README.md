@@ -4,7 +4,7 @@ Terraform to create F5XC cloud CE mandatory SGs
 
 ##  Generate prefixes
 
-https://github.com/cklewar/f5-xc-cloud-ce-sg/assets/29709930/8ed29cfb-e5e1-4be8-b331-8809d46e64f8
+https://github.com/cklewar/f5-xc-cloud-ce-sg/assets/29709930/92b5e10a-9cad-4d60-8f94-6184a3d813a7
 
 ## Usage
 
