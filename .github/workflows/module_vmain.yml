@@ -85,7 +85,15 @@ jobs:
         id: init
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
-        run:  terraform init -upgrade
+        run:  |
+          cd aws
+          terraform init -upgrade
+          cd ..
+          cd gcp
+          terraform init -upgrade
+          cd ..
+          cd azure
+          terraform init -upgrade
       - name: Terraform Plan
         id: plan
         env:
@@ -152,7 +160,15 @@ jobs:
         id: init
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
-        run:  terraform init -upgrade
+        run: |
+          cd aws
+          terraform init -upgrade
+          cd ..
+          cd gcp
+          terraform init -upgrade
+          cd ..
+          cd azure
+          terraform init -upgrade
       - name: Terraform Apply
         id: apply
         env:
@@ -173,12 +189,16 @@ jobs:
           TF_VAR_azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
-        run: terraform apply -auto-approve -no-color
-        continue-on-error: false
-      - name: Cleanup environment
-        id: cleanup_env
         run: |
-          rm main.tf
+          cd aws
+          terraform apply -auto-approve -no-color
+          cd ..
+          cd gcp
+          terraform apply -auto-approve -no-color
+          cd ..
+          cd azure
+          terraform apply -auto-approve -no-color
+        continue-on-error: false
       - run: echo "This job's status is ${{ job.status }}."
   cloud-ce-sg-module-reapply:
     runs-on: ubuntu-latest
@@ -214,7 +234,15 @@ jobs:
         id: init
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
-        run: terraform init -upgrade
+        run: |
+          cd aws
+          terraform init -upgrade
+          cd ..
+          cd gcp
+          terraform init -upgrade
+          cd ..
+          cd azure
+          terraform init -upgrade
       - name: Terraform Apply
         id: reapply
         env:
@@ -235,12 +263,16 @@ jobs:
             TF_VAR_azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
             TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
             TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
-        run: terraform apply -auto-approve -no-color
-        continue-on-error: false
-      - name: Cleanup environment
-        id: cleanup_env
         run: |
-          rm main.tf
+          cd aws
+          terraform apply -auto-approve -no-color
+          cd ..
+          cd gcp
+          terraform apply -auto-approve -no-color
+          cd ..
+          cd azure
+          terraform apply -auto-approve -no-color
+        continue-on-error: false
       - run: echo "This job's status is ${{ job.status }}."
   cloud-ce-sg-module-destroy:
     runs-on: ubuntu-latest
@@ -276,7 +308,15 @@ jobs:
         id: init
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
-        run:  terraform init -upgrade
+        run: |
+          cd aws
+          terraform init -upgrade
+          cd ..
+          cd gcp
+          terraform init -upgrade
+          cd ..
+          cd azure
+          terraform init -upgrade
       - name: Terraform Destroy
         id: destroy
         env:
@@ -297,10 +337,14 @@ jobs:
           TF_VAR_azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
-        run: terraform destroy -auto-approve -no-color
-        continue-on-error: false
-      - name: Cleanup environment
-        id: cleanup_env
         run: |
-          rm main.tf
+          cd aws
+          terraform destroy -auto-approve -no-color
+          cd ..
+          cd gcp
+          terraform destroy -auto-approve -no-color
+          cd ..
+          cd azure
+          terraform destroy -auto-approve -no-color
+        continue-on-error: false
       - run: echo "This job's status is ${{ job.status }}."
