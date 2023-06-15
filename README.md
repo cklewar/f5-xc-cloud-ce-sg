@@ -17,9 +17,6 @@ https://github.com/cklewar/f5-xc-cloud-ce-sg/assets/29709930/92b5e10a-9cad-4d60-
 - Initialize with `terraform init`
 - Apply with `terraform apply -auto-approve` or destroy with `terraform destroy -auto-approve`
 
-
-
-
 ## Cloud CE SG module usage example
   
 ````hcl
