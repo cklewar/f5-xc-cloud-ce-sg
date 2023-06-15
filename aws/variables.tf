@@ -20,33 +20,6 @@ variable "aws_vp_enable_dns_hostnames" {
   default = true
 }
 
-variable "aws_security_group_rules_slo_egress_secure_ce" {
-  type = list(object({
-    from_port   = string
-    to_port     = string
-    ip_protocol = string
-    cidr_blocks = list(string)
-  }))
-}
-
-variable "aws_security_group_rules_slo_egress_secure_ce_extended" {
-  type = list(object({
-    from_port   = string
-    to_port     = string
-    ip_protocol = string
-    cidr_blocks = list(string)
-  }))
-}
-
-variable "aws_security_group_rules_slo_ingress_secure_ce" {
-  type = list(object({
-    from_port   = string
-    to_port     = string
-    ip_protocol = string
-    cidr_blocks = list(string)
-  }))
-}
-
 variable "f5xc_ip_ranges_Americas_TCP" {
   type = list(string)
 }

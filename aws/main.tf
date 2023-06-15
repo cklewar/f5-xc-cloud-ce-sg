@@ -11,8 +11,8 @@ module "aws_security_group_slo_secure_ce" {
   custom_tags                 = var.common_tags
   description                 = "F5 XC SECURE CLOUD CE SLO SG"
   aws_security_group_name     = format("%s-sg-slo-secure-ce", var.f5xc_cluster_name)
-  security_group_rules_egress  = var.aws_security_group_rules_slo_egress_secure_ce
-  security_group_rules_ingress = var.aws_security_group_rules_slo_ingress_secure_ce
+  security_group_rules_egress  = local.aws_security_group_rules_slo_egress_secure_ce
+  security_group_rules_ingress = local.aws_security_group_rules_slo_ingress_secure_ce
 }
 
 module "aws_security_group_slo_secure_ce_extended" {
@@ -21,6 +21,6 @@ module "aws_security_group_slo_secure_ce_extended" {
   custom_tags                 = var.common_tags
   description                 = "F5 XC SECURE CLOUD CE SLO SG EXTENDED"
   aws_security_group_name     = format("%s-sg-slo-secure-ce-extended", var.f5xc_cluster_name)
-  security_group_rules_egress  = var.aws_security_group_rules_slo_egress_secure_ce_extended
+  security_group_rules_egress  = local.aws_security_group_rules_slo_egress_secure_ce_extended
   security_group_rules_ingress = []
 }
