@@ -71,10 +71,6 @@ jobs:
       - name: List files in the cert release
         run: |
           ls -la ${{ github.workspace }}/f5-xc-cert
-      - name: Setup environment
-        id: setup_env
-        run: |
-           cp main.tf.example main.tf
       - name: Setup Terraform
         id: setup_tf
         uses: hashicorp/setup-terraform@v2
@@ -106,12 +102,17 @@ jobs:
           TF_VAR_azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
-        run: terraform plan -no-color
+        run: | 
+          cd aws
+          terraform plan -no-color
+          cd ..
+          cd gcp
+          terraform plan -no-color
+          cd ..
+          cd azure
+          terraform plan -no-color
+          cd ..
         continue-on-error: false
-      - name: Cleanup environment
-        id: cleanup_env
-        run: |
-          rm main.tf
       - run: echo "This job's status is ${{ job.status }}."
   cloud-ce-sg-module-apply:
     runs-on: ubuntu-latest
