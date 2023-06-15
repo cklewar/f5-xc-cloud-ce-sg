@@ -25,4 +25,5 @@ resource "google_compute_firewall" "slo" {
   log_config {
     metadata = each.value.log_config.metadata
   }
+  provider = google.default
 }
