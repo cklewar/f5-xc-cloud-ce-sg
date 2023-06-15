@@ -1,7 +1,3 @@
-variable "slo_network" {
-  type = string
-}
-
 variable "gcp_region" {
   type = string
 }
@@ -15,6 +11,15 @@ variable "gcp_project_id" {
 }
 
 variable "gcp_application_credentials" {
+  type = string
+}
+
+variable "auto_create_subnetworks" {
+  type    = bool
+  default = false
+}
+
+variable "subnet_slo_ip_cidr_range" {
   type = string
 }
 
