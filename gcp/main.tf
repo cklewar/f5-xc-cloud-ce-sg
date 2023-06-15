@@ -1,5 +1,5 @@
 resource "google_compute_firewall" "slo" {
-  for_each           = {for rule in var.f5xc_ce_slo_firewall.rules :  rule.name => rule}
+  for_each           = {for rule in local.f5xc_secure_ce_slo_firewall.rules : rule.name => rule}
   name               = each.value.name
   network            = var.slo_network
   priority           = each.value.priority

@@ -5,7 +5,7 @@ locals {
   f5xc_ip_ranges_all      = concat(local.f5xc_ip_ranges_americas, concat(local.f5xc_ip_ranges_europe, local.f5xc_ip_ranges_asia))
 
   f5xc_secure_ce_slo_firewall = {
-    rules = concat([
+    rules = [
       {
         name        = "${var.f5xc_cluster_name}-slo-allow-http-nat-t-ingress-${var.gcp_region}"
         priority    = 1000
@@ -122,6 +122,6 @@ locals {
           metadata = "INCLUDE_ALL_METADATA"
         }
       }
-    ], var.f5xc_ce_slo_firewall.rules)
+    ]
   }
 }
