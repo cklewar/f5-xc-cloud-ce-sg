@@ -1,0 +1,9 @@
+module "sg_slo" {
+  source                                      = "../modules/azure/security_group"
+  custom_tags                                 = var.common_tags
+  azure_region                                = var.f5xc_azure_region
+  azure_resource_group_name                   = var.azurerm_resource_group_name
+  azure_security_group_name                   = format("%s-slo", var.f5xc_cluster_name)
+  azure_linux_security_rules                  = var.azurerm_security_group_slo_id
+  create_interface_security_group_association = false
+}
