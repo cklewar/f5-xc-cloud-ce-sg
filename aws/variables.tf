@@ -43,7 +43,6 @@ variable "f5xc_aws_availability_zone" {
 
 variable "owner" {
   type    = string
-  default = "c.klewar@f5.com"
 }
 
 variable "ssh_public_key_file" {
