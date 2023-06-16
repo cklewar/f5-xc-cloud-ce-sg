@@ -20,7 +20,7 @@ Terraform to create F5XC Cloud CE with SLO secure SG applied.
 
 ##  Public prefixes lists
 To generate up to date ip prefix list form official F5 XC documentation `f5_xc_pub_prefix_gen` tool is available at https://github.com/cklewar/f5-xc-pub-prefix-gen.
-To generate additional SG egress ip prefix list `fw_log_ip_extractor` script is available at https://github.com/cklewar/gcp_fw_log_ip_extractor
+To generate additional SG egress ip prefix list `fw_log_ip_extractor` script is available at https://github.com/cklewar/gcp_fw_log_ip_extractor.
 
 Example run for `f5-xc-pub-prefix-gen`:
 

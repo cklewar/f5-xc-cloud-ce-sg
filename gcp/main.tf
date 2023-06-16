@@ -11,7 +11,7 @@ module "gcp_secure_cloud_ce_single_provided_prefixes_node_single_nic_new_vpc" {
   f5xc_api_token               = var.f5xc_api_token
   f5xc_token_name              = format("%s-%s-%s", var.project_prefix, var.project_name, var.project_suffix)
   f5xc_cluster_name            = format("%s-%s-%s", var.project_prefix, var.project_name, var.project_suffix)
-  f5xc_ce_slo_subnet           = "10.15.250.0/24"
+  f5xc_ce_slo_subnet           = var.f5xc_ce_slo_subnet
   f5xc_ce_gateway_type         = "ingress_gateway"
   f5xc_ip_ranges_Asia_TCP      = var.f5xc_ip_ranges_Asia_TCP
   f5xc_ip_ranges_Asia_UDP      = var.f5xc_ip_ranges_Asia_UDP

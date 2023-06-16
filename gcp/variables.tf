@@ -168,3 +168,7 @@ variable "f5xc_ip_ranges_Asia_UDP" {
 variable "f5xc_ce_egress_ip_ranges" {
   type = list(string)
 }
+
+variable "f5xc_ce_slo_subnet" {
+  type = string
+}
