@@ -21,12 +21,11 @@ module "f5xc_aws_secure_ce_single_node_single_nic_existing_vpc" {
   f5xc_ce_slo_enable_secure_sg = true
   f5xc_aws_vpc_az_nodes        = {
     node0 = {
-      f5xc_aws_vpc_slo_subnet    = "172.16.44.0/27",
-      f5xc_aws_vpc_az_name       = format("%s%s", var.f5xc_aws_region, "a"),
-      f5xc_aws_vpc_nat_gw_subnet = "172.16.44.32/27",
+      f5xc_aws_vpc_az_name    = format("%s%s", var.f5xc_aws_region, "a"),
+      f5xc_aws_vpc_slo_subnet = var.f5xc_aws_vpc_node0_slo_subnet
     }
   }
-  aws_vpc_cidr_block                   = "127.16.40.0/21"
+  aws_vpc_cidr_block                   = var.aws_vpc_cidr_block
   aws_security_group_rules_slo_egress  = []
   aws_security_group_rules_slo_ingress = []
   aws_security_group_rules_sli_egress  = []

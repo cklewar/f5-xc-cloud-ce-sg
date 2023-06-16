@@ -42,7 +42,7 @@ variable "f5xc_aws_availability_zone" {
 }
 
 variable "owner" {
-  type    = string
+  type = string
 }
 
 variable "ssh_public_key_file" {
@@ -78,5 +78,9 @@ variable "f5xc_ce_egress_ip_ranges" {
 }
 
 variable "aws_vpc_cidr_block" {
+  type = string
+}
+
+variable "f5xc_aws_vpc_node0_slo_subnet" {
   type = string
 }
