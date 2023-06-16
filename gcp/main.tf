@@ -1,43 +1,37 @@
-resource "google_compute_network" "slo_vpc_network" {
-  name                    = "${var.f5xc_cluster_name}-slo-vpc-network"
-  auto_create_subnetworks = var.auto_create_subnetworks
-  provider                = google.default
-}
-
-resource "google_compute_subnetwork" "slo_subnet" {
-  name          = "${var.f5xc_cluster_name}-slo-subnetwork"
-  region        = var.gcp_region
-  network       = google_compute_network.slo_vpc_network.id
-  ip_cidr_range = var.subnet_slo_ip_cidr_range
-  provider      = google.default
-}
-
-resource "google_compute_firewall" "slo" {
-  for_each           = {for rule in local.f5xc_secure_ce_slo_firewall.rules : rule.name => rule}
-  name               = each.value.name
-  network            = google_compute_network.slo_vpc_network.name
-  priority           = each.value.priority
-  direction          = each.value.direction
-  target_tags        = each.value.target_tags
-  source_ranges      = each.value.direction == "INGRESS" ? each.value.ranges : null
-  destination_ranges = each.value.direction == "EGRESS" ? each.value.ranges : null
-
-  dynamic "allow" {
-    for_each = each.value.allow
-    content {
-      protocol = allow.value.protocol
-      ports    = allow.value.ports
+module "gcp_secure_cloud_ce_single_provided_prefixes_node_single_nic_new_vpc" {
+  source                       = "../modules/f5xc/ce/gcp"
+  owner                        = var.owner
+  gcp_region                   = var.gcp_region
+  ssh_username                 = "centos"
+  ssh_public_key               = file(var.ssh_public_key_file)
+  instance_image               = var.machine_image_base["ingress_gateway"]
+  f5xc_tenant                  = var.f5xc_tenant
+  f5xc_api_url                 = var.f5xc_api_url
+  f5xc_namespace               = var.f5xc_namespace
+  f5xc_api_token               = var.f5xc_api_token
+  f5xc_token_name              = format("%s-%s-%s", var.project_prefix, var.project_name, var.project_suffix)
+  f5xc_cluster_name            = format("%s-%s-%s", var.project_prefix, var.project_name, var.project_suffix)
+  f5xc_ce_slo_subnet           = "10.15.250.0/24"
+  f5xc_ce_gateway_type         = "ingress_gateway"
+  f5xc_ip_ranges_Asia_TCP      = var.f5xc_ip_ranges_Asia_TCP
+  f5xc_ip_ranges_Asia_UDP      = var.f5xc_ip_ranges_Asia_UDP
+  f5xc_ce_egress_ip_ranges     = var.f5xc_ce_egress_ip_ranges
+  f5xc_ip_ranges_Europe_TCP    = var.f5xc_ip_ranges_Europe_TCP
+  f5xc_ip_ranges_Europe_UDP    = var.f5xc_ip_ranges_Europe_UDP
+  f5xc_ip_ranges_Americas_TCP  = var.f5xc_ip_ranges_Americas_TCP
+  f5xc_ip_ranges_Americas_UDP  = var.f5xc_ip_ranges_Americas_UDP
+  f5xc_ce_slo_enable_secure_sg = true
+  f5xc_ce_nodes                = {
+    node0 = {
+      az = format("%s-b", var.gcp_region)
     }
   }
-  dynamic "deny" {
-    for_each = each.value.deny
-    content {
-      protocol = deny.value.protocol
-      ports    = deny.value.ports
-    }
+  providers = {
+    google   = google.default
+    volterra = volterra.default
   }
-  log_config {
-    metadata = each.value.log_config.metadata
-  }
-  provider = google.default
+}
+
+output "gcp_secure_cloud_ce_single_provided_prefixes_node_single_nic_new_vpc" {
+  value = module.gcp_secure_cloud_ce_single_provided_prefixes_node_single_nic_new_vpc.ce
 }

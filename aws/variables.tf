@@ -1,27 +1,53 @@
-variable "common_tags" {
-  type = map(string)
+variable "project_prefix" {
+  type        = string
+  description = "prefix string put in front of string"
+  default     = "f5xc"
+}
+
+variable "project_suffix" {
+  type        = string
+  description = "prefix string put at the end of string"
+  default     = "02"
+}
+
+variable "f5xc_api_p12_file" {
+  type = string
+}
+
+variable "f5xc_api_url" {
+  type = string
+}
+
+variable "f5xc_api_token" {
+  type = string
+}
+
+variable "f5xc_tenant" {
+  type = string
+}
+
+variable "f5xc_namespace" {
+  type    = string
+  default = "system"
 }
 
 variable "f5xc_aws_region" {
+  type    = string
+  default = "us-west-2"
+}
+
+variable "f5xc_aws_availability_zone" {
+  type    = string
+  default = "a"
+}
+
+variable "owner" {
+  type    = string
+  default = "c.klewar@f5.com"
+}
+
+variable "ssh_public_key_file" {
   type = string
-}
-
-variable "f5xc_cluster_name" {
-  type = string
-}
-
-variable "aws_vpc_cidr_block" {
-  type = string
-}
-
-variable "aws_vpc_enable_dns_support" {
-  type    = bool
-  default = true
-}
-
-variable "aws_vp_enable_dns_hostnames" {
-  type    = bool
-  default = true
 }
 
 variable "f5xc_ip_ranges_Americas_TCP" {
@@ -49,6 +75,5 @@ variable "f5xc_ip_ranges_Asia_UDP" {
 }
 
 variable "f5xc_ce_egress_ip_ranges" {
-  type        = list(string)
-  description = "Egress IP ranges for F5 XC CE"
+  type = list(string)
 }
