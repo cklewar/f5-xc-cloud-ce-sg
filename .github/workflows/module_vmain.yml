@@ -123,10 +123,11 @@ jobs:
           TF_VAR_azure_subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           TF_VAR_azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           TF_VAR_ssh_private_key_file: ${{ secrets.SSH_PRIVATE_KEY_FILE }}
-          TF_VAR_ssh_public_key_file: ${{ secrets.SSH_PUBLIC_KEY_FILE }}
+          TF_VAR_ssh_public_key_file: ${{ github.workspace }}/f5-xc-cert/keys/${{ secrets.SSH_PUBLIC_KEY_FILE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
         run: |
+          echo ${{ github.workspace }}/f5-xc-cert/keys/${{ secrets.SSH_PUBLIC_KEY_FILE }}
           cd aws
           terraform plan -no-color
           cd ..
