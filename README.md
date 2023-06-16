@@ -1,17 +1,16 @@
 # CLOUD CE SG
 
-Terraform to create F5XC cloud CE mandatory SGs
-- 
+Terraform to create F5XC Cloud CE with SLO secure SG applied. 
+ 
 - Clone this repo with `git clone --recurse-submodules https://github.com/cklewar/f5-xc-cloud-ce-sg`
 - Enter repository directory with `cd f5-xc-cloud-ce-sg`
 - Obtain F5XC API certificate file from Console and save it to `cert` directory
 - Enter cloud provider specific directory e.g. aws `cd aws`
   * Change backend settings in `versions.tf` file to fit your environment needs
   * Change `terraform.tfvars` input variables as needed
+  * Initialize with `terraform init`
+  * Apply with `terraform apply -auto-approve` or destroy with `terraform destroy -auto-approve`
   * Repeat steps for gcp and azure
-- Initialize with `terraform init`
-- Apply with `terraform apply -auto-approve` or destroy with `terraform destroy -auto-approve`
-
 
 ##  Public prefixes lists
 To generate up to date ip prefix list form official F5 XC documentation `f5_xc_pub_prefix_gen` tool is available at https://github.com/cklewar/f5-xc-pub-prefix-gen.
