@@ -77,3 +77,7 @@ variable "f5xc_ip_ranges_Asia_UDP" {
 variable "f5xc_ce_egress_ip_ranges" {
   type = list(string)
 }
+
+variable "aws_vpc_cidr_block" {
+  type = string
+}
