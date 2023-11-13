@@ -45,7 +45,11 @@ variable "owner" {
   type = string
 }
 
-variable "ssh_public_key_file" {
+variable "root_path" {
+  type = string
+}
+
+variable "ssh_public_key_file_absolute" {
   type = string
 }
 

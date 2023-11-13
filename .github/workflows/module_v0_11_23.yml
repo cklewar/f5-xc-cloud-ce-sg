@@ -118,6 +118,7 @@ jobs:
           TF_VAR_ssh_public_key_file: ${{ secrets.SSH_PUBLIC_KEY_FILE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
           terraform plan -no-color
@@ -190,6 +191,7 @@ jobs:
           TF_VAR_ssh_public_key_file: ${{ secrets.SSH_PUBLIC_KEY_FILE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
           terraform apply -auto-approve -no-color
@@ -262,6 +264,7 @@ jobs:
           TF_VAR_ssh_public_key_file: ${{ secrets.SSH_PUBLIC_KEY_FILE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
           terraform apply -auto-approve -no-color
@@ -331,6 +334,7 @@ jobs:
           TF_VAR_ssh_public_key_file: ${{ secrets.SSH_PUBLIC_KEY_FILE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
           terraform destroy -auto-approve -no-color
