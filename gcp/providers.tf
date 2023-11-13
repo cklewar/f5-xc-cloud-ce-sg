@@ -7,7 +7,7 @@ provider "google" {
 }
 
 provider "volterra" {
-  api_p12_file = var.f5xc_api_p12_file
+  api_p12_file = format("%s/%s", var.root_path, var.f5xc_api_p12_file_absolute)
   url          = var.f5xc_api_url
   alias        = "default"
 }
