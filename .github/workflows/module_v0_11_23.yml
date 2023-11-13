@@ -40,24 +40,20 @@ jobs:
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform init -upgrade
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform init -upgrade
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform init -upgrade
       - name: Terraform Validate
         id: validate
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform validate -no-color
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform validate -no-color
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform validate -no-color
   cloud-ce-sg-module-plan:
     runs-on: ubuntu-latest
@@ -94,18 +90,15 @@ jobs:
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform init -upgrade
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform init -upgrade
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform init -upgrade
       - name: Terraform Plan
         id: plan
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
           GH_PAT: ${{ secrets.GH_PAT }}
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_app_terraform_io }}
           VES_P12_PASSWORD: ${{ secrets.VES_P12_PASSWORD }}
@@ -126,13 +119,11 @@ jobs:
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform plan -no-color
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform plan -no-color
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform plan -no-color
         continue-on-error: false
       - run: echo "This job's status is ${{ job.status }}."
@@ -171,18 +162,15 @@ jobs:
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform init -upgrade
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform init -upgrade
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform init -upgrade
       - name: Terraform Apply
         id: apply
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
           GH_PAT: ${{ secrets.GH_PAT }}
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_app_terraform_io }}
           VES_P12_PASSWORD: ${{ secrets.VES_P12_PASSWORD }}
@@ -203,13 +191,11 @@ jobs:
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform apply -auto-approve -no-color
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform apply -auto-approve -no-color
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform apply -auto-approve -no-color
         continue-on-error: false
       - run: echo "This job's status is ${{ job.status }}."
@@ -248,13 +234,11 @@ jobs:
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform init -upgrade
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform init -upgrade
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform init -upgrade
       - name: Terraform Apply
         id: reapply
@@ -279,13 +263,11 @@ jobs:
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform apply -auto-approve -no-color
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform apply -auto-approve -no-color
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform apply -auto-approve -no-color
         continue-on-error: false
       - run: echo "This job's status is ${{ job.status }}."
@@ -318,13 +300,11 @@ jobs:
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform init -upgrade
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform init -upgrade
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform init -upgrade
       - name: List files in the cert repository
         run: |
@@ -332,7 +312,6 @@ jobs:
       - name: Terraform Destroy
         id: destroy
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_APP_TERRAFORM_IO }}
           GH_PAT: ${{ secrets.GH_PAT }}
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_app_terraform_io }}
           VES_P12_PASSWORD: ${{ secrets.VES_P12_PASSWORD }}
@@ -353,13 +332,11 @@ jobs:
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
         run: |
-          cd aws
+          cd ${{ github.workspace }}/aws
           terraform destroy -auto-approve -no-color
-          cd ..
-          cd gcp
+          cd ${{ github.workspace }}/gcp
           terraform destroy -auto-approve -no-color
-          cd ..
-          cd azure
+          cd ${{ github.workspace }}/azure
           terraform destroy -auto-approve -no-color
         continue-on-error: false
       - run: echo "This job's status is ${{ job.status }}."
