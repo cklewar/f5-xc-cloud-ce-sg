@@ -60,7 +60,7 @@ variable "gcp_project_id" {
   type = string
 }
 
-variable "gcp_application_credentials" {
+variable "gcp_application_credentials_absolute" {
   type = string
 }
 

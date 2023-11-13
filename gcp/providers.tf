@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = file(var.gcp_application_credentials)
+  credentials = file(format("%s/%s", var.root_path, var.gcp_application_credentials_absolute))
   project     = var.gcp_project_id
   region      = var.gcp_region
   zone        = var.gcp_zone
