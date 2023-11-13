@@ -121,6 +121,7 @@ jobs:
           TF_VAR_ssh_public_key_file_absolute: ${{ secrets.SSH_PUBLIC_KEY_FILE_ABSOLUTE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_gcp_application_credentials_absolute: ${{ secrets.GCP_APPLICATION_CREDENTIALS_ABSOLUTE }}
           TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
@@ -197,6 +198,7 @@ jobs:
           TF_VAR_ssh_public_key_file_absolute: ${{ secrets.SSH_PUBLIC_KEY_FILE_ABSOLUTE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_gcp_application_credentials_absolute: ${{ secrets.GCP_APPLICATION_CREDENTIALS_ABSOLUTE }}
           TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
@@ -273,6 +275,7 @@ jobs:
           TF_VAR_ssh_public_key_file_absolute: ${{ secrets.SSH_PUBLIC_KEY_FILE_ABSOLUTE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_gcp_application_credentials_absolute: ${{ secrets.GCP_APPLICATION_CREDENTIALS_ABSOLUTE }}
           TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
@@ -346,6 +349,7 @@ jobs:
           TF_VAR_ssh_public_key_file_absolute: ${{ secrets.SSH_PUBLIC_KEY_FILE_ABSOLUTE }}
           TF_VAR_gcp_project_id: ${{ secrets.GCP_PROJECT_ID }}
           TF_VAR_gcp_application_credentials: ${{ secrets.GCP_APPLICATION_CREDENTIALS }}
+          TF_VAR_gcp_application_credentials_absolute: ${{ secrets.GCP_APPLICATION_CREDENTIALS_ABSOLUTE }}
           TF_VAR_root_path: ${{ github.workspace }}
         run: |
           cd ${{ github.workspace }}/aws
