@@ -3,7 +3,7 @@ module "gcp_secure_cloud_ce_single_provided_prefixes_node_single_nic_new_vpc" {
   owner                        = var.owner
   gcp_region                   = var.gcp_region
   ssh_username                 = "centos"
-  ssh_public_key               = file(var.ssh_public_key_file)
+  ssh_public_key               = file(format("%s/%s", var.root_path, var.ssh_public_key_file_absolute))
   instance_image               = var.machine_image_base["ingress_gateway"]
   f5xc_tenant                  = var.f5xc_tenant
   f5xc_api_url                 = var.f5xc_api_url
