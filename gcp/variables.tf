@@ -28,7 +28,7 @@ variable "f5xc_api_token" {
   type = string
 }
 
-variable "f5xc_api_p12_file" {
+variable "f5xc_api_p12_file_absolute" {
   type = string
 }
 
@@ -36,7 +36,11 @@ variable "f5xc_api_url" {
   type = string
 }
 
-variable "ssh_public_key_file" {
+variable "root_path" {
+  type = string
+}
+
+variable "ssh_public_key_file_absolute" {
   type = string
 }
 
@@ -56,7 +60,7 @@ variable "gcp_project_id" {
   type = string
 }
 
-variable "gcp_application_credentials" {
+variable "gcp_application_credentials_absolute" {
   type = string
 }
 

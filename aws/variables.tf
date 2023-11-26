@@ -10,7 +10,7 @@ variable "project_suffix" {
   default     = "02"
 }
 
-variable "f5xc_api_p12_file" {
+variable "f5xc_api_p12_file_absolute" {
   type = string
 }
 
@@ -45,7 +45,11 @@ variable "owner" {
   type = string
 }
 
-variable "ssh_public_key_file" {
+variable "root_path" {
+  type = string
+}
+
+variable "ssh_public_key_file_absolute" {
   type = string
 }
 

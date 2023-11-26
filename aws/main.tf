@@ -29,7 +29,7 @@ module "f5xc_aws_secure_ce_single_node_single_nic_existing_vpc" {
   aws_security_group_rules_slo_egress  = []
   aws_security_group_rules_slo_ingress = []
   aws_security_group_rules_sli_egress  = []
-  ssh_public_key                       = file(var.ssh_public_key_file)
+  ssh_public_key                       = file(format("%s/%s", var.root_path, var.ssh_public_key_file_absolute))
   providers                            = {
     aws      = aws.default
     volterra = volterra.default
